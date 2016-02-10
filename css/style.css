@@ -27,13 +27,28 @@ body {
 }
 .toolbar {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: -10px;
+  left: 0;
   display: none;
+  width: 100%;
+  padding: 2px 10px;
 }
 
 .toolbar a {
   display: inline-block;
+  line-height: 16px;
+  float: right;
+}
+.toolbar a[title="Delete"],
+.toolbar a[title="Add"] {
+  float: left;
+  margin-right: 8px;
+}
+.toolbar a[title="Delete"] > svg {
+  color: red;
+}
+.toolbar a[title="Add"] > svg {
+  color: green;
 }
 .saver {
   max-width: 120px;
@@ -51,7 +66,8 @@ Example showing how to change the color/size of the icons:
 ======================================================================================== */
 
 #main-container {
-  width: 960px;
+  width: 100%;
+  max-width: 960px;
   margin: 0 auto;
 }
 #App {
@@ -83,8 +99,14 @@ Example showing how to change the color/size of the icons:
 }
 .controls > label {
   align-self: center;
+  flex-basis: 100%;
+  width: 100%;
 }
-.controls input, .controls textarea {
+.controls > label textarea {
+  width: 100%;
+  min-height: 100px;
+}
+.controls input, .controls textarea, .controls select {
   padding: 2px 5px;
   margin-bottom: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -140,6 +162,7 @@ Example showing how to change the color/size of the icons:
     -ms-flexbox-wrap: nowrap;
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+    max-width: 100%;
 }
 .flex-row {
     -moz-box-direction: row;
@@ -438,4 +461,17 @@ span.buyNowText, span.shopNowText {
     float: left;
     padding: 7px 0;
     width: 100%;
+}
+
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-justify {
+  text-align: justify;
 }

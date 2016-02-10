@@ -76,7 +76,6 @@ img{max-width:100%;height:auto;}
 .page-content{
 
 }
-.divider-image img{min-width:100%;}
 .intro-text{
   margin:0 !important;
   padding-bottom:0 !important;
@@ -135,4 +134,20 @@ img{max-width:100%;height:auto;}
 }
 .no-flexbox.flexboxtweener #chart .flex-item-auto {
   max-width: 33.3333%;
+}
+.safeTech > div {
+  flex: 1 1 50%;
+}
+.modes > div, .features > div > div,
+.safeTech > div {
+  min-width: 300px;
+}
+.modes > div:nth-last-child(n+2), .modes > div:nth-last-child(n+2) ~ div {
+  flex: 1 1 50%;
+}
+.modes > div:nth-last-child(n+3), .modes > div:nth-last-child(n+3) ~ div {
+  flex: 1 1 33%;
+}
+.modes > div:nth-last-child(n+4), .modes > div:nth-last-child(n+4) ~ div {
+  flex: 1 1 25%;
 }
