@@ -34,7 +34,7 @@ class IntroText extends Component {
           </label>
           <label>
             Text:
-            <textarea ref="text" defaultValue={this.props.text}></textarea>
+            <textarea ref="text" defaultValue={this.props.text} />
           </label>
           <label>
             VideoId:
@@ -51,7 +51,7 @@ class IntroText extends Component {
         {(this.props.videoId && this.props.videoId !== '') && <a className="cam_btn qx350_video" href="#">View Video</a>}
         {(this.props.videoId && this.props.videoId !== '') && <div className="featVideo" style={{display: 'none'}}>
           <div className="videoWrapper">
-            <iframe width="560" height="315" src={`https://www.youtube.com/embed/${this.props.videoId}`} frameBorder="0" allowFullScreen></iframe>
+            <iframe width="560" height="315" src={`https://www.youtube.com/embed/${this.props.videoId}`} frameBorder="0" allowFullScreen="true"></iframe>
           </div>
         </div>}
         <Toolbar onClick={() => this.toggleEditing()}/>

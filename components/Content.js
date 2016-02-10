@@ -12,9 +12,6 @@ import Controls from './Controls';
 
 import InitialState from './InitialState';
 
-//import set from 'lodash.set';
-//import get from 'lodash.get';
-
 
 export default class Content extends Component {
   constructor(props) {
