@@ -1,0 +1,138 @@
+html, body {
+  background: url(/Content/Images/cam/quad-grid-bg.jpg) top center;
+}
+body{
+  color: #898989;
+  font-family: 'OpenSansRegular', 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  line-height: 22px;
+  font-size: 12px;
+}
+/*
+.techicons {margin:0 auto 15px;text-indent:110%;overflow:hidden;white-space:nowrap;}
+.techicons, .techicons:before {display:block;width:70px;height:70px;background: url(/Content/NanoCPS/Images/iconsSprite.png) no-repeat;}
+.techicons:before {content:'';opacity:0;transition: all ease 0.5s;}
+.techIconItem:hover .techicons:before {opacity:1;}
+
+.stabilityIcon {background-position:-6px 0px;}
+.stabilityIcon:before {background-position:-208px 0px;}
+
+.agilityIcon {background-position:-1px -1620px;}
+.agilityIcon:before {background-position:-208px -1619px;}
+
+.threeDIcon {background-position:-6px -233px;}
+.threeDIcon:before {background-position:-209px -233px;}
+*/
+.landing-content {
+  box-sizing: border-box;
+}
+.landing-content *, .landing-content *:before, .landing-content *:after {
+  box-sizing: inherit;
+}
+
+.partsFinder a.cam_btn, .manual a.cam_btn{
+  text-align:center;
+  width:100%;
+  max-width: 255px;
+}
+.partsFinder a.cam_btn > *, .manual a.cam_btn > * {
+  color: #ed1b30 !important;
+}
+#chart{
+  position: relative;
+  top:20px;
+}
+#chart .flex-item-auto {
+  margin-top: 10px;
+  padding: 5px;
+}
+.text-price, .text-price-grey{text-align: center;}
+.best-plan {
+  z-index: 111;
+  background: #f9f9f9;
+  margin: 0;
+  position:relative;
+  top:-20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
+}
+.best-plan:hover {
+    background: #FFF;
+    cursor: pointer;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, .25);
+    top: -25px;
+}
+#footer{
+  margin-top:0;
+  margin-bottom:0;
+}
+section {
+  padding: 10px;
+}
+img{max-width:100%;height:auto;}
+.landing-content{
+  background:#f5f5f5;
+}
+.page-content{
+
+}
+.divider-image img{min-width:100%;}
+.intro-text{
+  margin:0 !important;
+  padding-bottom:0 !important;
+}
+.intro-text h4 {
+  font-size: 24px;
+  font-family: "OpenSansRegular", Arial, Verdana;
+  color: #373737;
+  text-transform: uppercase;
+  line-height: 32px;
+}
+.intro-text h5 {
+  font-size: 16px;
+  line-height: 22px;
+  color: #878787;
+}
+
+.safeTech{
+  margin:0px;
+}
+
+.featVideo{
+  margin: 20px auto !important;
+}
+
+.overview .flex-item-auto {
+  padding: 10px;
+}
+.features .flex-it > .flex-item-auto {
+  padding: 10px;
+}
+.features .flex-item-auto img{border: solid 1px;}
+#chart .flex-item {
+  flex-basis: 33.3333%;
+}
+.pricing-box-container {
+  text-align: center;
+}
+
+
+.text-center {
+  text-align: center;
+}
+.no-flexbox.flexboxtweener #Content {
+  padding-top: 88px;
+}
+.no-flexbox.flexboxtweener .flex-it {
+  max-width: 960px;
+}
+.no-flexbox.flexboxtweener .modes .flex-item-auto {
+  max-width: 33.3333%;
+  padding: 10px;
+}
+.no-flexbox.flexboxtweener .features .flex-item-auto {
+  max-width: 50%;
+}
+.no-flexbox.flexboxtweener #chart .flex-item-auto {
+  max-width: 33.3333%;
+}
