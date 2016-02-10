@@ -68,6 +68,6 @@ IntroText.propTypes = {
   heading: React.PropTypes.string.isRequired,
   text: React.PropTypes.string.isRequired,
   videoId: React.PropTypes.string.isRequired
-}
+};
 
 export default IntroText;

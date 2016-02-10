@@ -12,7 +12,6 @@ class SupportLinks extends Component {
           <div className="manual flex-item-auto text-center">
             <a className="cam_btn qx350_manual pdf" href={`/ProdInfo/Files/${this.props.prodId}-Manual-EN.pdf`}>{this.props.prodName}<br />Manuals</a>
           </div>
-
         </div>
         <p>&nbsp;</p>
       </section>

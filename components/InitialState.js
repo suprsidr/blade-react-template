@@ -153,6 +153,6 @@ const InitialState = {
       url: 'http://www.horizonhobby.com/zeyrok-bnf-yellow-blh7380t1'
     }
   ]
-}
+};
 
 export default InitialState;

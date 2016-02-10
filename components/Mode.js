@@ -13,7 +13,7 @@ class Mode extends Component {
     arr[this.props.index] = {
       heading: this.refs.heading.value,
       text: this.refs.text.value
-    }
+    };
     this.props.updateState({
       modes: arr
     });
@@ -72,6 +72,6 @@ Mode.propTypes = {
   updateState: React.PropTypes.func.isRequired,
   modes: React.PropTypes.array.isRequired,
   index: React.PropTypes.number.isRequired
-}
+};
 
 export default Mode;

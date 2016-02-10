@@ -9,10 +9,6 @@ export default class Modes extends Component {
         <div className="flex-it flex-wrap flex-row overview modes">
           {this.props.modes.map((mode, i) => (
             <Mode
-              /*updateState={this.props.updateState}
-              allModes={this.props.modes}
-              heading={mode.heading}
-              text={mode.text}*/
               {...this.props}
               index={i}
               key={i} />
