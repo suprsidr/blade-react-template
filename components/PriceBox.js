@@ -18,7 +18,7 @@ class PriceBox extends Component {
         neededToComplete: Array.from(this.refs.needed.children).map((item, i) => item.value),
         specs: Array.from(this.refs.specs.children).map((row, i) => ({name: row.children[0].value,value: row.children[2].value})),
         url: this.refs.url.value
-      }
+      };
     this.props.updateState({
       prices: arr
     });
@@ -52,17 +52,17 @@ class PriceBox extends Component {
       return(<div className="flex-item-auto text-center">
         <div className="flex-it flex-col controls">
           <label>
-            Class NO. 1:
-            <select ref="class1" defaultValue="">
-              <option value="">none</option>
-              <option value="best-plan">best-plan</option>
+            Plan:
+            <select ref="class1" defaultValue={box.className[0]}>
+              <option value="">Regular</option>
+              <option value="best-plan">Best</option>
             </select>
           </label>
           <label>
-            Class NO. 2:
-            <select ref="class2" defaultValue="text-price">
-              <option value="text-price">text-price</option>
-              <option value="text-price-grey">text-price-grey</option>
+            Background-color:
+            <select ref="class2" defaultValue={box.className[1]}>
+              <option value="text-price">Red</option>
+              <option value="text-price-grey">Grey</option>
             </select>
           </label>
           <label>
@@ -139,6 +139,6 @@ PriceBox.propTypes = {
   updateState: React.PropTypes.func.isRequired,
   prices: React.PropTypes.array.isRequired,
   index: React.PropTypes.number.isRequired
-}
+};
 
 export default PriceBox;

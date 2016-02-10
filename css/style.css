@@ -102,6 +102,10 @@ Example showing how to change the color/size of the icons:
   flex-basis: 100%;
   width: 100%;
 }
+.controls {
+  background-color: #fff;
+  padding: 10px;
+}
 .controls > label textarea {
   width: 100%;
   min-height: 100px;
