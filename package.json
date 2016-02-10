@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/suprsidr/win-tfs.git"
+    "url": "git+https://github.com/suprsidr/blade-react-template.git"
   },
   "keywords": [
     "react"
@@ -20,9 +20,9 @@
   "author": "Wayne Patterson",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/suprsidr/win-tfs/issues"
+    "url": "https://github.com/suprsidr/blade-react-template.git/issues"
   },
-  "homepage": "https://github.com/suprsidr/win-tfs#readme",
+  "homepage": "https://github.com/suprsidr/blade-react-template.git#readme",
   "babel": {
     "presets": [
       "react",
@@ -31,6 +31,7 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^1.10.3",
     "watchify": "^3.2.2"
   },
   "dependencies": {
