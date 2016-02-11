@@ -14,15 +14,20 @@ export default class Controls extends Component {
         prodName: this.refs.prodName.value,
         prodId: this.refs.prodId.value
       }
-    });
-    var req = request.post('/export');
-    req.field('html', JSON.stringify(ReactDOMServer.renderToStaticMarkup(React.createElement(OutputTemplate, {currentState: this.props.appState}))))
-       .field('productName', this.refs.prodName.value);
+    }, () => {
+      if(this.refs.checker.checked) {
+        var req = request.post('/export');
+        req.field('html', JSON.stringify(ReactDOMServer.renderToStaticMarkup(React.createElement(OutputTemplate, {currentState: this.props.appState}))))
+           .field('js', JSON.stringify(this.props.appState))
+           .field('productName', this.refs.prodName.value);
 
-    req.end((err, res) => {
-      err?console.log(err):console.log('response: ', res);
+        req.end((err, res) => {
+          err?console.log(err):console.log('response: ', res);
+        });
+        //console.log(ReactDOMServer.renderToStaticMarkup(React.createElement(OutputTemplate, {currentState: this.props.appState})));
+      }
     });
-    //console.log(ReactDOMServer.renderToStaticMarkup(React.createElement(OutputTemplate, {currentState: this.props.appState})));
+
   }
   render() {
     return (
@@ -35,7 +40,10 @@ export default class Controls extends Component {
           ProdId:
           <input ref="prodId" defaultValue={this.props.prodInfo.prodId}/>
         </label>
-        <button onClick={() => this.save()}>Save</button>
+        <div className="flex-it flex-justify-around">
+          <label>Export Results? <input type="checkbox" ref="checker" defaultCheckedss={false}/></label>
+          <button onClick={() => this.save()}>Save</button>
+        </div>
       </div>
     )
   }

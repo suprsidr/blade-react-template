@@ -5,10 +5,10 @@ import request from 'superagent';
 
 class DividerImage extends Component {
   onDrop(files) {
-    //console.log('Received files: ', files);
+    console.log('Received files: ', files);
     //this.refs.dividerImage.style.maxWidth = '960px';
     //this.refs.dividerImage.src = files[0].preview;
-    var req = request.post('/uploads');
+    /*var req = request.post('/uploads');
     files.forEach((file) => {
       req
         .field('imageName', 'divider')
@@ -22,7 +22,14 @@ class DividerImage extends Component {
       this.props.updateState({
         dividerImages: arr
       });
-    });
+    });*/
+    var scr = document.createElement('script');
+    scr.src = files[0].preview;
+    var cb = (obj) => this.props.updateState(obj);
+    document.body.appendChild(scr);
+    setTimeout(() => {
+      cb(window.myAppState);
+    }, 1000);
   }
   render() {
     return (
