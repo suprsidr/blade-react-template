@@ -54,7 +54,7 @@ class IntroText extends Component {
             <iframe width="560" height="315" src={`https://www.youtube.com/embed/${this.props.videoId}`} frameBorder="0" allowFullScreen="true"></iframe>
           </div>
         </div>}
-        <Toolbar onClick={() => this.toggleEditing()}/>
+        {this.props.updateState && <Toolbar onClick={() => this.toggleEditing()}/>}
       </section>
     }
   }
@@ -64,7 +64,7 @@ class IntroText extends Component {
 }
 
 IntroText.propTypes = {
-  updateState: React.PropTypes.func.isRequired,
+  updateState: React.PropTypes.func,
   heading: React.PropTypes.string.isRequired,
   text: React.PropTypes.string.isRequired,
   videoId: React.PropTypes.string.isRequired

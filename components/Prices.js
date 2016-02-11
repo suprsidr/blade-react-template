@@ -19,7 +19,7 @@ class Prices extends Component {
 }
 
 Prices.propTypes = {
-  updateState: React.PropTypes.func.isRequired,
+  updateState: React.PropTypes.func,
   prices: React.PropTypes.array.isRequired
 }
 

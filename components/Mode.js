@@ -50,7 +50,7 @@ class Mode extends Component {
             <input ref="heading" defaultValue={mode.heading}/>
           </label>
           <label>
-            <textarea ref="text" defaultValue={mode.text}></textarea>
+            <textarea ref="text" defaultValue={mode.text}/>
           </label>
           <button className="saver" onClick={() => this.save()}>Save</button>
         </div>
@@ -59,7 +59,7 @@ class Mode extends Component {
       return <div className="flex-item-auto editable-item">
         <strong>{mode.heading}</strong>
         <p>{mode.text}</p>
-        <Toolbar onClick={() => this.toggleEditing()} onDelete={() => this.deleteItem()} onAdd={() => this.addItem()}/>
+        {this.props.updateState && <Toolbar onClick={() => this.toggleEditing()} onDelete={() => this.deleteItem()} onAdd={() => this.addItem()}/>}
       </div>
     }
   }
@@ -69,7 +69,7 @@ class Mode extends Component {
 }
 
 Mode.propTypes = {
-  updateState: React.PropTypes.func.isRequired,
+  updateState: React.PropTypes.func,
   modes: React.PropTypes.array.isRequired,
   index: React.PropTypes.number.isRequired
 };

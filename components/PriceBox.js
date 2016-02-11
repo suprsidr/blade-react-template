@@ -121,11 +121,11 @@ class PriceBox extends Component {
               </ul>
             </div>
             <a href="/StoreLocator/" className="button small round green">
-              <span className="shopNowText">Find a Retailer</span><i className="icon-circle-arrow-right"></i></a>
+              <span className="shopNowText">Find a Retailer</span><i className="icon-circle-arrow-right"/></a>
             <a href={box.url} className="button small round green">
-              <span className="buyNowText">Buy Now</span><i className="icon-circle-arrow-right"></i></a>
+              <span className="buyNowText">Buy Now</span><i className="icon-circle-arrow-right"/></a>
           </div>
-          <Toolbar onClick={() => this.toggleEditing()} onDelete={() => this.deleteItem()} onAdd={() => this.addItem()}/>
+          {this.props.updateState && <Toolbar onClick={() => this.toggleEditing()} onDelete={() => this.deleteItem()} onAdd={() => this.addItem()}/>}
         </div>
       )
     }
@@ -136,7 +136,7 @@ class PriceBox extends Component {
 }
 
 PriceBox.propTypes = {
-  updateState: React.PropTypes.func.isRequired,
+  updateState: React.PropTypes.func,
   prices: React.PropTypes.array.isRequired,
   index: React.PropTypes.number.isRequired
 };

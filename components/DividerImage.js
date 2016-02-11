@@ -28,14 +28,14 @@ class DividerImage extends Component {
     return (
       <div className="divider-image">
         {this.props.dividerImages[this.props.index] && <img ref="dividerImage" src={this.props.dividerImages[this.props.index]} alt="" />}
-        <Dropzone className="dropzone" onDrop={(files) => this.onDrop(files)} style={{height: '320px'}} />
+        {this.props.updateState && <Dropzone className="dropzone" onDrop={(files) => this.onDrop(files)} style={{height: '320px'}} />}
       </div>
     )
   }
 }
 
 DividerImage.propTypes = {
-  updateState: React.PropTypes.func.isRequired,
+  updateState: React.PropTypes.func,
   dividerImages: React.PropTypes.array.isRequired,
   prodName: React.PropTypes.string.isRequired,
   index: React.PropTypes.number.isRequired

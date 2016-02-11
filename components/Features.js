@@ -18,7 +18,7 @@ class Features extends Component {
 }
 
 Features.propTypes = {
-  updateState: React.PropTypes.func.isRequired,
+  updateState: React.PropTypes.func,
   features: React.PropTypes.array.isRequired,
   prodName: React.PropTypes.string.isRequired
 }

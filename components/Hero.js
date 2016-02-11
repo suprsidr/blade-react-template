@@ -26,14 +26,14 @@ class Hero extends Component {
     return (
       <div className="glamour-image">
         <img ref="heroImage" src={this.props.img} alt={this.props.alt}/>
-        <Dropzone className="dropzone" onDrop={(files) => this.onDrop(files)} style={{height: '500px'}} />
+        {this.props.updateState && <Dropzone className="dropzone" onDrop={(files) => this.onDrop(files)} style={{height: '500px'}} />}
       </div>
     )
   }
 }
 
 Hero.propTypes = {
-  updateState: React.PropTypes.func.isRequired,
+  updateState: React.PropTypes.func,
   img: React.PropTypes.string.isRequired,
   alt: React.PropTypes.string.isRequired,
   prodName: React.PropTypes.string.isRequired

@@ -31,7 +31,7 @@ export default class Content extends Component {
   render() {
     return (
       <div id='Content' className="flex-it flex-col landing-content">
-        <Controls prodInfo={this.state.prodInfo} updateState={(obj) => this.updateState(obj)}/>
+        <Controls appState={this.state} prodInfo={this.state.prodInfo} updateState={(obj) => this.updateState(obj)}/>
         <Hero img={this.state.hero.img} alt={this.state.hero.alt} prodName={this.state.prodInfo.prodName} updateState={(obj) => this.updateState(obj)}/>
         <IntroText heading={this.state.introText.heading} text={this.state.introText.text} videoId={this.state.introText.videoId} updateState={(obj) => this.updateState(obj)}/>
         <SafeTech heading={this.state.safeTech.heading} text={this.state.safeTech.text} updateState={(obj) => this.updateState(obj)}/>

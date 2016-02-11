@@ -21,7 +21,7 @@ export default class Modes extends Component {
 }
 
 Modes.propTypes = {
-  updateState: React.PropTypes.func.isRequired,
+  updateState: React.PropTypes.func,
   modes: React.PropTypes.array.isRequired
 }
 

@@ -79,7 +79,7 @@ class FeatureItem extends Component {
             <input ref="heading" defaultValue={feature.heading}/>
           </label>
           <label>
-            <textarea ref="text" defaultValue={feature.text}></textarea>
+            <textarea ref="text" defaultValue={feature.text}/>
           </label>
           <button className="saver" onClick={() => this.save()}>Save</button>
         </div>
@@ -88,7 +88,7 @@ class FeatureItem extends Component {
       return <div className="flex-item-auto text-center editable-item">
         <h4 className="center-txt"><strong>{feature.heading}</strong></h4>
         <p>{feature.text}</p>
-        <Toolbar onClick={() => this.toggleEditing()} onDelete={() => this.deleteItem()} onAdd={() => this.addItem()}/>
+        {this.props.updateState && <Toolbar onClick={() => this.toggleEditing()} onDelete={() => this.deleteItem()} onAdd={() => this.addItem()}/>}
       </div>
     }
   }
@@ -99,7 +99,7 @@ class FeatureItem extends Component {
         {this.renderItemOrEdit()}
         <div className="flex-item-auto text-center feature-image">
           <img ref="featureImage" src={feature.img} alt={feature.heading} />
-          <Dropzone className="dropzone" onDrop={(files) => this.onDrop(files)} style={{height: '295px'}} />
+          {this.props.updateState && <Dropzone className="dropzone" onDrop={(files) => this.onDrop(files)} style={{height: '295px'}} />}
         </div>
       </div>
     )
@@ -108,7 +108,7 @@ class FeatureItem extends Component {
 
 
 FeatureItem.propeTypes = {
-  updateState: React.PropTypes.func.isRequired,
+  updateState: React.PropTypes.func,
   features: React.PropTypes.array.isRequired,
   prodName: React.PropTypes.string.isRequired,
   index: React.PropTypes.number.isRequired

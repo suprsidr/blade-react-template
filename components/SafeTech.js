@@ -40,7 +40,7 @@ class SafeTech extends Component {
             <label>
               <input ref="heading" defaultValue={this.props.heading} style={{width: '100%'}}/>
             </label>
-            <textarea ref="text" defaultValue={this.props.text} style={{width: '100%', height: '90px', padding: '5px'}}></textarea>
+            <textarea ref="text" defaultValue={this.props.text} style={{width: '100%', height: '90px', padding: '5px'}}/>
             <button className="saver" onClick={() => this.save()}>Save</button>
           </div>
         </div>
@@ -58,7 +58,7 @@ class SafeTech extends Component {
           <p>{this.props.text}</p>
         </div>
       </div>
-      <Toolbar onClick={() => this.toggleEditing()}/>
+        {this.props.updateState && <Toolbar onClick={() => this.toggleEditing()}/>}
       </div>
     }
   }
@@ -68,7 +68,7 @@ class SafeTech extends Component {
 }
 
 SafeTech.propTypes = {
-  updateState: React.PropTypes.func.isRequired,
+  updateState: React.PropTypes.func,
   heading: React.PropTypes.string.isRequired,
   text: React.PropTypes.string.isRequired
 }
