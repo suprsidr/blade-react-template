@@ -38,9 +38,9 @@
   <div id="main-container" class="flex-it flex-row"></div>
   <script src="build/bundle.min.js"></script>
   <script type="text/ecmascript-6">
-    const $ = (selector) => document.querySelectorAll(selector);
-    $('.cam_btn.qx350_video')[0].addEventListener('click', (e) => {
-      const el = $('.featVideo')[0];
+    const $ = (selector) => document.querySelector(selector);
+    $('.cam_btn.qx350_video').addEventListener('click', (e) => {
+      const el = $('.featVideo');
       el.style.display = (el.style.display === 'block') ?  'none' : 'block';
       return false;
     }, false);
