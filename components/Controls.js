@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
-var ReactDOMServer = require('react-dom/server');
+import ReactDOMServer from 'react-dom/server';
+
+import request from 'superagent';
 import OutputTemplate from './OutputTemplate';
 
 export default class Controls extends Component {
+  constructor (props) {
+    super(props);
+  }
   save() {
     this.props.updateState({
       prodInfo: {
@@ -10,7 +15,14 @@ export default class Controls extends Component {
         prodId: this.refs.prodId.value
       }
     });
-    console.log(ReactDOMServer.renderToStaticMarkup(React.createElement(OutputTemplate, {})));
+    var req = request.post('/export');
+    req.field('html', JSON.stringify(ReactDOMServer.renderToStaticMarkup(React.createElement(OutputTemplate, {currentState: this.props.appState}))))
+       .field('productName', this.refs.prodName.value);
+
+    req.end((err, res) => {
+      err?console.log(err):console.log('response: ', res);
+    });
+    //console.log(ReactDOMServer.renderToStaticMarkup(React.createElement(OutputTemplate, {currentState: this.props.appState})));
   }
   render() {
     return (
@@ -30,6 +42,7 @@ export default class Controls extends Component {
 }
 
 Controls.propTypes = {
+  appState: React.PropTypes.object.isRequired,
   updateState: React.PropTypes.func.isRequired,
   prodInfo: React.PropTypes.object.isRequired
 }
