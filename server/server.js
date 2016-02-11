@@ -74,7 +74,13 @@ app.post('/uploads', cpUpload, function (req, res, next) {
       console.log(req.files, req.body);
     }
   });
-})
+});
+
+app.post('/export', cpUpload, function (req, res, next) {
+  console.log('on the server: ', req.body.html);
+  fs.writeFileSync(path.join('./Content', req.body.productName, 'Default.html'), JSON.parse(req.body.html));
+  res.end('got it');
+});
 
 app.listen(8080, function() {
   console.log('Server is listening on port 8080');
