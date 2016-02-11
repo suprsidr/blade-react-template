@@ -45,6 +45,7 @@
     "compression": "^1.6.1",
     "eslint-plugin-react": "^3.6.2",
     "express": "^4.13.3",
+    "html": "0.0.10",
     "imagemin": "^4.0.0",
     "imagemin-jpeg-recompress": "^4.3.0",
     "multer": "^1.1.0",

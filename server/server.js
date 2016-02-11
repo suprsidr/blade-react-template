@@ -8,6 +8,7 @@ var fs = require('fs');
 var path = require('path');
 var Imagemin = require('imagemin');
 var imageminJpegRecompress = require('imagemin-jpeg-recompress');
+var html = require('html');
 
 const joinForWebPath = function() {
   return Array.from(arguments).join('/').replace(/^./, '');
@@ -78,7 +79,7 @@ app.post('/uploads', cpUpload, function (req, res, next) {
 
 app.post('/export', cpUpload, function (req, res, next) {
   console.log('on the server: ', req.body.html);
-  fs.writeFileSync(path.join('./Content', req.body.productName, 'Default.html'), JSON.parse(req.body.html));
+  fs.writeFileSync(path.join('./Content', req.body.productName, 'Default.html'), html.prettyPrint(JSON.parse(req.body.html), {indent_size: 2}));
   res.end('got it');
 });
 
