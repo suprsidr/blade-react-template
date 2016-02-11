@@ -122,6 +122,11 @@ body{
   -moz-box-pack: justify;
   justify-content: flex-end;
 }
+.flex-justify-around {
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around
+}
 .flex-wrap {
   -moz-box-wrap: wrap;
   -webkit-box-wrap: wrap;
