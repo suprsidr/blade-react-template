@@ -12,7 +12,7 @@ var html = require('html');
 
 const joinForWebPath = function() {
   return Array.from(arguments).join('/').replace(/^./, '');
-}
+};
 app.use(compress());
 app.use(express.static(path.join(__dirname, './../')));
 
@@ -24,7 +24,7 @@ var cpUpload = upload.fields([
   { name: 'hero', maxCount: 1 },
   { name: 'divider', maxCount: 1 },
   { name: 'feature', maxCount: 1 }
-])
+]);
 app.post('/uploads', cpUpload, function (req, res, next) {
   try {
     var stats = fs.lstatSync(path.join('./Content', req.body.productName));
@@ -60,15 +60,15 @@ app.post('/uploads', cpUpload, function (req, res, next) {
   	console.log(files[0]);
   	// => {path: 'build/images/foo.jpg', contents: <Buffer 89 50 4e ...>}
     if(err) {
-      res.status(500).json({'error': err})
+      res.status(500).json({'error': err});
       res.end();
     } else {
       fs.rename(files[0].path, path.join('./Content', req.body.productName, 'img', req.files[req.body.imageName][0].originalname), function(err) {
         if(err) {
-          res.status(500).json({'error': err})
+          res.status(500).json({'error': err});
           res.end();
         } else {
-          res.json({'path': joinForWebPath('./Content', req.body.productName,'img', req.files[req.body.imageName][0].originalname)})
+          res.json({'path': joinForWebPath('./Content', req.body.productName,'img', req.files[req.body.imageName][0].originalname)});
           res.end();
         }
       });
