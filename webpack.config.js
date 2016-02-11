@@ -4,7 +4,7 @@ module.exports = {
   devtool: 'source-map',
   output: {
   	path: './build',
-    filename: 'bundle.min.js'
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
@@ -18,8 +18,8 @@ module.exports = {
         }
       }
     ]
-  },
+  }/*,
   plugins: [
     new webpack.optimize.UglifyJsPlugin({minimize: true})
-  ]
+  ]*/
 };

@@ -8,8 +8,6 @@ import Features from './Features';
 import Prices from './Prices';
 import SupportLinks from './SupportLinks';
 
-import InitialState from './InitialState';
-
 class OutputTemplate extends React.Component {
   constructor (props) {
     super(props);
@@ -18,7 +16,9 @@ class OutputTemplate extends React.Component {
 
   render () {
     return (
-      <div id="Content" className="flex-it flex-col landing-content">
+      <div className="flex-it flex-col landing-content">
+        <script src={`/Content/${this.state.prodInfo.prodName}/modernizr.js`}></script>
+        <link rel="stylesheet" href="/Content/Styles/template/orange-corporate-layout.css" media="screen"/>
         <link rel="stylesheet" href={`/Content/${this.state.prodInfo.prodName}/custom.css`} />
         <Hero img={this.state.hero.img} alt={this.state.hero.alt} prodName={this.state.prodInfo.prodName}/>
         <IntroText heading={this.state.introText.heading} text={this.state.introText.text} videoId={this.state.introText.videoId}/>

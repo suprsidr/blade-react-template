@@ -101,13 +101,13 @@ class PriceBox extends Component {
         <div className={`flex-item-auto ${box.className[0]} editable-item`}>
           <div className={box.className[1]}>
             <h3>${box.price}</h3>
-            <span className="bnfCompletion">{box.completion}</span>
+            <span>{box.completion}</span>
             <p>
               <span>{box.prodId}</span>
             </p>
           </div>
           <div className="pricing-box-container">
-            <div className="list-box-content bnfFeatureList">
+            <div className="list-box-content">
               <ul>
               {box.neededToComplete.map((item, i) => (
                 <li key={i}>{item}</li>
@@ -120,10 +120,12 @@ class PriceBox extends Component {
                 ))}
               </ul>
             </div>
-            <a href="/StoreLocator/" className="button small round green">
-              <span className="shopNowText">Find a Retailer</span><i className="icon-circle-arrow-right"/></a>
-            <a href={box.url} className="button small round green">
-              <span className="buyNowText">Buy Now</span><i className="icon-circle-arrow-right"/></a>
+            <div>
+              <a href="/StoreLocator/" className="button small round green">
+                <span className="shopNowText">Find&nbsp;a&nbsp;Retailer</span><i className="icon-circle-arrow-right"/></a>
+              <a href={box.url} className="button small round green">
+                <span className="buyNowText">Buy Now</span><i className="icon-circle-arrow-right"/></a>
+            </div>
           </div>
           {this.props.updateState && <Toolbar onClick={() => this.toggleEditing()} onDelete={() => this.deleteItem()} onAdd={() => this.addItem()}/>}
         </div>
