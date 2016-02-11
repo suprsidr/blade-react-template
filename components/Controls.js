@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-
+var ReactDOMServer = require('react-dom/server');
+import OutputTemplate from './OutputTemplate';
 
 export default class Controls extends Component {
   save() {
@@ -8,7 +9,8 @@ export default class Controls extends Component {
         prodName: this.refs.prodName.value,
         prodId: this.refs.prodId.value
       }
-    })
+    });
+    console.log(ReactDOMServer.renderToStaticMarkup(React.createElement(OutputTemplate, {})));
   }
   render() {
     return (
