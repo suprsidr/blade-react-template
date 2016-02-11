@@ -78,7 +78,7 @@ app.post('/uploads', cpUpload, function (req, res, next) {
 });
 
 app.post('/export', cpUpload, function (req, res, next) {
-  console.log('on the server: ', req.body.html);
+  //console.log('on the server: ', req.body.html);
   fs.writeFileSync(path.join('./Content', req.body.productName, 'Default.html'), html.prettyPrint(JSON.parse(req.body.html), {indent_size: 2}));
   res.end('got it');
 });
