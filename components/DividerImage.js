@@ -8,28 +8,21 @@ class DividerImage extends Component {
     console.log('Received files: ', files);
     //this.refs.dividerImage.style.maxWidth = '960px';
     //this.refs.dividerImage.src = files[0].preview;
-    /*var req = request.post('/uploads');
+    var req = request.post('/uploads');
     files.forEach((file) => {
       req
         .field('imageName', 'divider')
         .field('productName', this.props.prodName)
-        .attach('divider', file, 'divider-' + (this.props.index + 1) +'.jpg');
+        .attach('divider', file, 'divider-' + (this.props.index + 1) + '.jpg');
     });
     req.end((err, res) => {
-      err?console.log(err):console.log(res);
+      err ? console.log(err) : console.log(res);
       const arr = this.props.dividerImages.slice();
       arr[this.props.index] = res.body.path;
       this.props.updateState({
         dividerImages: arr
       });
-    });*/
-    var scr = document.createElement('script');
-    scr.src = files[0].preview;
-    var cb = (obj) => this.props.updateState(obj);
-    document.body.appendChild(scr);
-    setTimeout(() => {
-      cb(window.myAppState);
-    }, 1000);
+    });
   }
   render() {
     return (

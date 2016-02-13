@@ -146,6 +146,12 @@ Example showing how to change the color/size of the icons:
   left: 0;
   margin: auto;
 }
+.available {
+  padding: 10px;
+}
+.available ul {
+  list-style: none;
+}
 
 .glamour-image, .divider-image,
 .feature-image, .editable-item {

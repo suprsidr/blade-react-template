@@ -1,12 +1,24 @@
 import React, {Component} from 'react';
 import ReactDOMServer from 'react-dom/server';
-
 import request from 'superagent';
 import OutputTemplate from './OutputTemplate';
 
 export default class Controls extends Component {
   constructor (props) {
     super(props);
+    this.state = {
+      available: []
+    }
+  }
+  componentDidMount() {
+    request
+      .get('/available')
+      .end((err, res) => {
+        err ? console.log(err) : '';//console.log(res.body);
+        this.setState( {
+          available: res.body
+        });
+      });
   }
   save() {
     this.props.updateState({
@@ -24,45 +36,55 @@ export default class Controls extends Component {
         req.end((err, res) => {
           err?console.log(err):console.log('response: ', res);
         });
-        //console.log(ReactDOMServer.renderToStaticMarkup(React.createElement(OutputTemplate, {currentState: this.props.appState})));
       }
     });
 
   }
-  onDrop(files) {
-    var scr = document.createElement('script');
-    scr.src = files[0].preview;
-    var cb = (obj) => this.props.updateState(obj);
-    document.body.appendChild(scr);
-    setTimeout(() => {
-      cb(window.myAppState);
-    }, 1000);
+  getStoredState(e, path) {
+    e.preventDefault();
+    var req = request.post('/state');
+    req.field('appStatePath', path);
+
+    req.end((err, res) => {
+      err?console.log(err):'';//console.log('response: ', res.body);
+      this.props.updateState(JSON.parse(res.body));
+    });
   }
   render() {
     return (
       <div id='Controls' className="flex-it flex-col controls">
-      <label>
-        ProdName:
-        <input ref="prodName" defaultValue={this.props.prodInfo.prodName}/>
-      </label>
+        <label className="text-right">
+          ProdName:
+          <input ref="prodName" defaultValue={this.props.prodInfo.prodName}/>
+        </label>
         <label className="text-right">
           ProdId:
           <input ref="prodId" defaultValue={this.props.prodInfo.prodId}/>
         </label>
         <div className="flex-it flex-justify-around">
-          <label>Export Results? <input type="checkbox" ref="checker" defaultCheckedss={false}/></label>
+          <label>Export Results? <input type="checkbox" ref="checker" defaultChecked={false}/></label>
           <button onClick={() => this.save()}>Save</button>
         </div>
-        {this.props.updateState && <Dropzone className="dropzone" onDrop={(files) => this.onDrop(files)} style={{height: '320px'}} />}
+        <div className="available">
+          <h4>Restore previous product:</h4>
+          <ul>
+            {this.state.available.map((item, i) => (
+              <li key={i}>
+                <a href={item} onClick={(e) => this.getStoredState(e, item)}>{item.split('/')[0]}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     )
   }
 }
 
+
 Controls.propTypes = {
   appState: React.PropTypes.object.isRequired,
   updateState: React.PropTypes.func.isRequired,
   prodInfo: React.PropTypes.object.isRequired
-}
+};
 
 export default Controls;

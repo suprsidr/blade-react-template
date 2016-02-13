@@ -9,6 +9,7 @@ var path = require('path');
 var Imagemin = require('imagemin');
 var imageminJpegRecompress = require('imagemin-jpeg-recompress');
 var html = require('html');
+var read = require('fs-readdir-recursive');
 
 const joinForWebPath = function() {
   return Array.from(arguments).join('/').replace(/^./, '');
@@ -81,6 +82,18 @@ app.post('/export', cpUpload, function (req, res, next) {
   fs.writeFileSync(path.join('./Content', req.body.productName, 'Default.html'), html.prettyPrint(JSON.parse(req.body.html), {indent_size: 2}));
   fs.writeFileSync(path.join('./Content', req.body.productName, 'appState.js'), req.body.js);
   res.end('got it');
+});
+
+app.get('/available', cpUpload, (req, res, next) => {
+  const files = read('./Content').filter((f) => f.indexOf('appState') > -1).map((f) => f.replace(/\\/, '/')) || [];
+  res.json(files);
+  res.end();
+});
+
+app.post('/state', cpUpload, (req, res, next) => {
+  const appState = fs.readFileSync(path.join('./Content/', req.body.appStatePath), 'utf-8');
+  res.json(appState);
+  res.end();
 });
 
 app.listen(8080, function() {
