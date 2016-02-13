@@ -9,7 +9,6 @@ var path = require('path');
 var Imagemin = require('imagemin');
 var imageminJpegRecompress = require('imagemin-jpeg-recompress');
 var html = require('html');
-var jsbeautify = require('js-beautify').js_beautify;
 
 const joinForWebPath = function() {
   return Array.from(arguments).join('/').replace(/^./, '');

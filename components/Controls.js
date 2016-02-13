@@ -29,6 +29,15 @@ export default class Controls extends Component {
     });
 
   }
+  onDrop(files) {
+    var scr = document.createElement('script');
+    scr.src = files[0].preview;
+    var cb = (obj) => this.props.updateState(obj);
+    document.body.appendChild(scr);
+    setTimeout(() => {
+      cb(window.myAppState);
+    }, 1000);
+  }
   render() {
     return (
       <div id='Controls' className="flex-it flex-col controls">
@@ -44,6 +53,7 @@ export default class Controls extends Component {
           <label>Export Results? <input type="checkbox" ref="checker" defaultCheckedss={false}/></label>
           <button onClick={() => this.save()}>Save</button>
         </div>
+        {this.props.updateState && <Dropzone className="dropzone" onDrop={(files) => this.onDrop(files)} style={{height: '320px'}} />}
       </div>
     )
   }
