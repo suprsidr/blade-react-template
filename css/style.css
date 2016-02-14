@@ -159,6 +159,8 @@ Example showing how to change the color/size of the icons:
 }
 .available ul {
   list-style: none;
+  max-height: 200px;
+  overflow-y: scroll;
 }
 
 .glamour-image, .divider-image,
