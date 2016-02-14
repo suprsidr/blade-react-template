@@ -57,6 +57,14 @@ body {
 .editable-item:hover .toolbar {
   display: inline-block;
 }
+.toolbar a[title="Add"] {
+  display: none;
+}
+#chart > div:last-of-type .toolbar a[title="Add"],
+.modes > div:last-of-type .toolbar a[title="Add"],
+.features > div:last-of-type .toolbar a[title="Add"] {
+  display: inline-block;
+}
 
 /* =======================================================================================
 Example showing how to change the color/size of the icons:

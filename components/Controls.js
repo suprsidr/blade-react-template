@@ -55,11 +55,11 @@ export default class Controls extends Component {
       <div id='Controls' className="flex-it flex-col controls">
         <label className="text-right">
           ProdName:
-          <input ref="prodName" defaultValue={this.props.prodInfo.prodName}/>
+          <input ref="prodName" defaultValue={this.props.appState.prodInfo.prodName}/>
         </label>
         <label className="text-right">
           ProdId:
-          <input ref="prodId" defaultValue={this.props.prodInfo.prodId}/>
+          <input ref="prodId" defaultValue={this.props.appState.prodInfo.prodId}/>
         </label>
         <div className="flex-it flex-justify-around">
           <label>Export Results? <input type="checkbox" ref="checker" defaultChecked={false}/></label>
@@ -75,6 +75,16 @@ export default class Controls extends Component {
             ))}
           </ul>
         </div>
+        <div className="available">
+          <h4>Restore previous state:</h4>
+          <ul>
+            {this.props.stateLog.map((item, i) => (
+              <li key={i}>
+                <a href={item.time} onClick={(e) => {e.preventDefault(); this.props.updateState(item.state)}}>{item.time}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     )
   }
@@ -83,8 +93,8 @@ export default class Controls extends Component {
 
 Controls.propTypes = {
   appState: React.PropTypes.object.isRequired,
-  updateState: React.PropTypes.func.isRequired,
-  prodInfo: React.PropTypes.object.isRequired
+  stateLog: React.PropTypes.array.isRequired,
+  updateState: React.PropTypes.func.isRequired
 };
 
 export default Controls;

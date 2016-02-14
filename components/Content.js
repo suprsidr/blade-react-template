@@ -13,26 +13,27 @@ import Controls from './Controls';
 import InitialState from './InitialState';
 
 
-export default class Content extends Component {
+class Content extends Component {
   constructor(props) {
     super(props);
     this.state = InitialState;
+    this.stateLog = [{time: this.getTimeStamp(), state: InitialState}];
   }
   updateState(obj, cb) {
+    this.stateLog.push({time: this.getTimeStamp(), state: this.state});
     this.setState(obj, () => {
       cb && cb();
       console.log(this.state);
     });
   }
-  getFromState(path, defaultValue=null) {
-    // not sure if we'll need this
-    // @see lodash _.get https://lodash.com/docs#get
-    //get(this.state, path, defaultValue);
+  getTimeStamp() {
+    const x = new Date();
+    return `${x.toDateString()}, ${x.getMinutes()}:${x.getSeconds()}`;
   }
   render() {
     return (
       <div id='Content' className="flex-it flex-col landing-content">
-        <Controls appState={this.state} prodInfo={this.state.prodInfo} updateState={(obj, cb) => this.updateState(obj, cb)}/>
+        <Controls appState={this.state} stateLog={this.stateLog} updateState={(obj, cb) => this.updateState(obj, cb)}/>
         <Hero img={this.state.hero.img} alt={this.state.hero.alt} prodName={this.state.prodInfo.prodName} updateState={(obj) => this.updateState(obj)}/>
         <IntroText heading={this.state.introText.heading} text={this.state.introText.text} videoId={this.state.introText.videoId} updateState={(obj) => this.updateState(obj)}/>
         <SafeTech heading={this.state.safeTech.heading} text={this.state.safeTech.text} updateState={(obj) => this.updateState(obj)}/>
@@ -48,3 +49,5 @@ export default class Content extends Component {
     )
   }
 }
+
+export default Content;
