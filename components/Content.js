@@ -19,8 +19,9 @@ class Content extends Component {
     this.state = InitialState;
     this.stateLog = [{time: this.getTimeStamp(), state: InitialState}];
   }
-  updateState(obj, cb) {
+  updateState(obj, cb, idx) {
     this.stateLog.push({time: this.getTimeStamp(), state: this.state});
+    idx && (this.stateLog = this.stateLog.slice(0, idx));
     this.setState(obj, () => {
       cb && cb();
       console.log(this.state);
@@ -33,7 +34,7 @@ class Content extends Component {
   render() {
     return (
       <div id='Content' className="flex-it flex-col landing-content">
-        <Controls appState={this.state} stateLog={this.stateLog} updateState={(obj, cb) => this.updateState(obj, cb)}/>
+        <Controls appState={this.state} stateLog={this.stateLog} updateState={(obj, cb, idx) => this.updateState(obj, cb, idx)}/>
         <Hero img={this.state.hero.img} alt={this.state.hero.alt} prodName={this.state.prodInfo.prodName} updateState={(obj) => this.updateState(obj)}/>
         <IntroText heading={this.state.introText.heading} text={this.state.introText.text} videoId={this.state.introText.videoId} updateState={(obj) => this.updateState(obj)}/>
         <SafeTech heading={this.state.safeTech.heading} text={this.state.safeTech.text} updateState={(obj) => this.updateState(obj)}/>

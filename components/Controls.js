@@ -80,7 +80,7 @@ export default class Controls extends Component {
           <ul>
             {this.props.stateLog.map((item, i) => (
               <li key={i}>
-                <a href={item.time} onClick={(e) => {e.preventDefault(); this.props.updateState(item.state)}}>{item.time}</a>
+                <a href={item.time} onClick={(e) => {e.preventDefault(); this.props.updateState(item.state, null, i)}}>{item.time}</a>
               </li>
             ))}
           </ul>
