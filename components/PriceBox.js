@@ -15,7 +15,7 @@ class PriceBox extends Component {
         price: this.refs.price.value,
         completion: this.refs.completion.value,
         prodId: this.refs.prodId.value,
-        neededToComplete: Array.from(this.refs.needed.children).map((item, i) => item.value),
+        neededToComplete: Array.from(this.refs.needed.children).map((item, i) => item.querySelector('input').value),
         specs: Array.from(this.refs.specs.children).map((row, i) => ({name: row.children[0].value,value: row.children[2].value})),
         url: this.refs.url.value
       };
@@ -42,6 +42,36 @@ class PriceBox extends Component {
     const arr = this.props.prices.slice();
     if(arr.length === 3) return;
     arr.push(arr[0]);
+    this.props.updateState({
+      prices: arr
+    });
+  }
+  deleteNeededItem(idx) {
+    const arr = this.props.prices.slice();
+    if(arr[this.props.index].neededToComplete.length === 1) return;
+    arr[this.props.index].neededToComplete.splice(idx, 1);
+    this.props.updateState({
+      prices: arr
+    });
+  }
+  addNeededItem() {
+    const arr = this.props.prices.slice();
+    arr[this.props.index].neededToComplete.push(arr[this.props.index].neededToComplete[0]);
+    this.props.updateState({
+      prices: arr
+    });
+  }
+  deleteSpecItem() {
+    let arr = this.props.prices.slice();
+    if(arr[this.props.index].specs.length === 1) return;
+    arr[this.props.index].specs.splice(null, 1);
+    this.props.updateState({
+      prices: arr
+    });
+  }
+  addSpecItem() {
+    const arr = this.props.prices.slice();
+    arr[this.props.index].specs.push(arr[this.props.index].specs[0]);
     this.props.updateState({
       prices: arr
     });
@@ -80,13 +110,19 @@ class PriceBox extends Component {
           <label>Needed To Complete:</label>
           <label ref="needed" className="flex-it flex-col">
             {box.neededToComplete.map((item, i) => (
-              <input key={i} defaultValue={item}/>
+              <span key={i} className="editable-item">
+                <input defaultValue={item} style={{width: '100%'}}/>
+                {(i === box.neededToComplete.length - 1) && <Toolbar miniclass=" mini" onClick={() => this.toggleEditing()} onDelete={() => this.deleteNeededItem()} onAdd={() => this.addNeededItem()}/>}
+              </span>
             ))}
           </label>
           <label>Specs:</label>
-          <label ref="specs" className="flex-it flex-col">
+          <label ref="specs" className="flex-it flex-col specs-edit">
             {box.specs.map((item, i) => (
-              <span key={i}><input defaultValue={item.name}/>&nbsp;<input defaultValue={item.value}/></span>
+              <span key={i} className="editable-item">
+                <input defaultValue={item.name}/>&nbsp;<input defaultValue={item.value}/>
+                {(i === box.specs.length - 1) && <Toolbar miniclass=" mini" onClick={() => this.toggleEditing()} onDelete={() => this.deleteSpecItem()} onAdd={() => this.addSpecItem()}/>}
+              </span>
             ))}
           </label>
           <label>Purchase URL:</label>

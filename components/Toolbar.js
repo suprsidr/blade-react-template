@@ -6,7 +6,7 @@ class Toolbar extends Component {
   }
   render() {
     return (
-      <span className="toolbar">
+      <span className={`toolbar${this.props.miniclass}`}>
         {this.props.onDelete && <a title="Delete" href="#edit" className="edit-icon-link" onClick={() => this.props.onDelete()}>
           <svg className="icon icon-edit"><use xlinkHref="#icon-minus"/></svg>
         </a>}
@@ -19,6 +19,10 @@ class Toolbar extends Component {
       </span>
     )
   }
+}
+
+Toolbar.defaultProps = {
+  miniclass: ''
 }
 
 export default Toolbar;

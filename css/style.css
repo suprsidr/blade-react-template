@@ -62,8 +62,15 @@ body {
 }
 #chart > div:last-of-type .toolbar a[title="Add"],
 .modes > div:last-of-type .toolbar a[title="Add"],
-.features > div:last-of-type .toolbar a[title="Add"] {
+.features > div:last-of-type .toolbar a[title="Add"],
+.controls label > span:last-of-type .toolbar.mini a[title="Add"] {
   display: inline-block;
+}
+.controls label > span .toolbar.mini a[title="Edit"] {
+  display: none;
+}
+.specs-edit input {
+  max-width: 49%;
 }
 
 /* =======================================================================================
