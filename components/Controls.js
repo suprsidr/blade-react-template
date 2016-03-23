@@ -7,7 +7,8 @@ export default class Controls extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      available: []
+      available: [],
+      prodInfo: this.props.appState.prodInfo
     }
   }
   componentDidMount() {
@@ -19,6 +20,15 @@ export default class Controls extends Component {
           available: res.body
         });
       });
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+    this.setState({
+      prodInfo: nextProps.appState.prodInfo
+    }, () => {
+      this.refs.prodName.value = this.state.prodInfo.prodName;
+      this.refs.prodId.value = this.state.prodInfo.prodId;
+    });
   }
   save() {
     this.props.updateState({
@@ -55,11 +65,11 @@ export default class Controls extends Component {
       <div id='Controls' className="flex-it flex-col controls">
         <label className="text-right">
           ProdName:
-          <input ref="prodName" defaultValue={this.props.appState.prodInfo.prodName}/>
+          <input ref="prodName" defaultValue={this.state.prodInfo.prodName}/>
         </label>
         <label className="text-right">
           ProdId:
-          <input ref="prodId" defaultValue={this.props.appState.prodInfo.prodId}/>
+          <input ref="prodId" defaultValue={this.state.prodInfo.prodId}/>
         </label>
         <div className="flex-it flex-justify-around">
           <label>Export Results? <input type="checkbox" ref="checker" defaultChecked={false}/></label>
