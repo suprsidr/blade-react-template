@@ -194,11 +194,28 @@ body{
 #chart{
   position: relative;
   top:20px;
+  -webkit-box-justify-content: center;
+  -webkit-justify-content: center;
+  -ms-flex-justify-content: center;
+  justify-content: center;
 }
 #chart .flex-item-auto {
   margin-top: 10px;
   padding: 5px;
 }
+#chart > div {
+  min-width: 310px;
+}
+#chart > div:nth-last-child(-n+3):first-child, #chart > div:nth-last-child(-n+3):first-child ~ div {
+  max-width: 33.33333%;
+}
+#chart > div:nth-last-child(-n+2):first-child, #chart > div:nth-last-child(-n+2):first-child ~ div {
+  max-width: 50%;
+}
+#chart > div:nth-last-child(-n+1):first-child, #chart > div:nth-last-child(-n+1):first-child ~ div {
+  max-width: 50%;
+}
+
 .text-price, .text-price-grey{text-align: center;}
 .best-plan {
   z-index: 111;
@@ -314,3 +331,4 @@ img{max-width:100%;height:auto;}
 .no-flexbox.flexboxtweener #chart .flex-item-auto {
   max-width: 33.3333%;
 }
+
