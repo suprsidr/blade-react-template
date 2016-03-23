@@ -22,7 +22,6 @@ export default class Controls extends Component {
       });
   }
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
     this.setState({
       prodInfo: nextProps.appState.prodInfo
     }, () => {
