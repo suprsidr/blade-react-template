@@ -37,8 +37,10 @@ export default class Controls extends Component {
       }
     }, () => {
       if(this.refs.checker.checked) {
-        var req = request.post('/export');
-        req.field('html', JSON.stringify(ReactDOMServer.renderToStaticMarkup(React.createElement(OutputTemplate, {currentState: this.props.appState}))))
+        const script = '<script>$(function() {$(".qx350_video").on("click", function(e) {e.preventDefault();$(".featVideo").slideToggle();})});</script>';
+        let req = request.post('/export');
+
+        req.field('html', JSON.stringify(ReactDOMServer.renderToStaticMarkup(React.createElement(OutputTemplate, {currentState: this.props.appState})) + script))
            .field('js', JSON.stringify(this.props.appState))
            .field('productName', this.refs.prodName.value);
 
