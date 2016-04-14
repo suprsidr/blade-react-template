@@ -210,8 +210,7 @@ h3 {
     line-height: 30px;
 }
 
-.intro-text h4 span {
-  background: #ed1b30 none repeat scroll 0 0;
+.intro-text h4 {
   color: #fff;
   padding: 2px 5px;
 }
@@ -293,12 +292,12 @@ span.buyNowText, span.shopNowText {
     border-bottom: 1px solid #323232;
 }
 
-.text-price h3 span, .text-price-grey h3 span {
+.text-price h3, .text-price-grey h3 {
     color: #fff;
     font-size: 48px;
     text-shadow: 0 2px #3c3c3c;
 }
-.text-price span, .text-price-grey span {
+.text-price, .text-price-grey {
     color: #fff;
     font-size: 13px;
     font-style: italic;
