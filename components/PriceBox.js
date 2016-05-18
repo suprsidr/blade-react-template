@@ -16,7 +16,7 @@ class PriceBox extends Component {
         completion: this.refs.completion.value,
         prodId: this.refs.prodId.value,
         neededToComplete: Array.from(this.refs.needed.children).map((item, i) => item.querySelector('input').value),
-        specs: Array.from(this.refs.specs.children).map((row, i) => ({name: row.children[0].value,value: row.children[2].value})),
+        specs: Array.from(this.refs.specs.children).map((row, i) => ({name: row.children[0].value,value: row.children[1].value})),
         url: this.refs.url.value
       };
     this.props.updateState({
