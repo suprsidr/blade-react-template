@@ -27,13 +27,12 @@ var cpUpload = upload.fields([
   { name: 'feature', maxCount: 1 }
 ]);
 app.post('/uploads', cpUpload, function (req, res, next) {
-  try {
-    var stats = fs.lstatSync(path.join('./Content', req.body.productName));
-  } catch(e) {
-    console.log(e);
-    fs.mkdirSync(path.join('./Content', req.body.productName));
-    fs.mkdirSync(path.join('./Content', req.body.productName, 'img'));
-  }
+  fs.exists(path.join('./Content', req.body.productName), function(exists) {
+    if (!exists) {
+      fs.mkdirSync(path.join('./Content', req.body.productName));
+      fs.mkdirSync(path.join('./Content', req.body.productName, 'img'));
+    }
+  });
 
   var minr = new Imagemin();
   minr.src(req.files[req.body.imageName][0].path)
@@ -79,11 +78,18 @@ app.post('/uploads', cpUpload, function (req, res, next) {
 });
 
 app.post('/export', cpUpload, function (req, res, next) {
-  fs.writeFileSync(path.join('./Content', req.body.productName, 'Default.html'), html.prettyPrint(JSON.parse(req.body.html), {indent_size: 2}));
-  fs.writeFileSync(path.join('./Content', req.body.productName, 'appState.js'), req.body.js);
-  fs.createReadStream(path.join('./js', 'modernizr.js')).pipe(fs.createWriteStream(path.join('./Content', req.body.productName, 'modernizr.js')));
-  fs.createReadStream(path.join('./css', 'custom.css')).pipe(fs.createWriteStream(path.join('./Content', req.body.productName, 'custom.css')));
-  res.end('got it');
+  fs.exists(path.join('./Content', req.body.productName), function(exists) {
+    if(!exists) {
+      fs.mkdirSync(path.join('./Content', req.body.productName));
+      fs.mkdirSync(path.join('./Content', req.body.productName, 'img'));
+    }
+    fs.writeFileSync(path.join('./Content', req.body.productName, 'Default.html'), html.prettyPrint(JSON.parse(req.body.html), {indent_size: 2}));
+    fs.writeFileSync(path.join('./Content', req.body.productName, 'appState.js'), req.body.js);
+    fs.createReadStream(path.join('./js', 'modernizr.js')).pipe(fs.createWriteStream(path.join('./Content', req.body.productName, 'modernizr.js')));
+    fs.createReadStream(path.join('./css', 'custom.css')).pipe(fs.createWriteStream(path.join('./Content', req.body.productName, 'custom.css')));
+    res.end('got it');
+  });
+
 });
 
 app.get('/available', cpUpload, (req, res, next) => {
